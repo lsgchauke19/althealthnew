@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>    
-<!-- the head section -->
+
 <head>
-    <title>Alt Health Care</title>
+    <title>Client Details</title>
+	<link rel="stylesheet" type="text/css" href="main.css"/>
     
 </head>
 
-<!-- the body section -->
 <body>
 <header>
-    <h1>LSG</h1>
+    <h1>Client</h1>
 </header>
 <main>
         
