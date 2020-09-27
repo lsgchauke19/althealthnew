@@ -11,6 +11,8 @@
 			<label>Surname:</label>
 			<input type="text" name="surname" value="<?php htmlspecialchars($surname);?>">
 			<?php echo $fields->getField('surname')->getHTML(); ?><br>
+			
+			
 		
 		
 		

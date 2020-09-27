@@ -1,5 +1,5 @@
 <?php
-namespace Register {
+namespace Add {
     class Validate {
         private $fields;
 
@@ -114,81 +114,28 @@ namespace Register {
             }
         }
 
-        public function password($name, $password, $required = true) {
-            $field = $this->fields->getField($name);
+       
 
-            if (!$required && empty($password)) {
-                $field->clearErrorMessage();
-                return;
-            }
-
-            $this->text($name, $password, $required, 8);   // require at least 8 characters
-            if ($field->hasError()) { return; }
-
-            // Patterns to validate password
-            $charClasses = array();
-            $charClasses[] = '[:digit:]';
-            $charClasses[] = '[:upper:]';
-            // $charClasses[] = '[:lower:]';    // Don't require any lowercase letters
-            // $charClasses[] = '_-';     // Don't require any special characters
-
-            $pw = '/^';
-            $valid = '[';
-            foreach($charClasses as $charClass) {
-                $pw .= '(?=.*[' . $charClass . '])';
-                $valid .= $charClass;
-            }
-            $valid .= ']{8,}';
-            $pw .= $valid . '$/';
-
-            $pwMatch = preg_match($pw, $password);
-
-            if ($pwMatch === false) {
-                $field->setErrorMessage('Error testing password.');
-                return;
-            } else if ($pwMatch != 1) {
-                $field->setErrorMessage(
-                    'Must have at least one uppercase letter and one number.');
-                return;
-            }
-        }
-
-        public function verify($name, $password, $verify, $required = true) {
-            $field = $this->fields->getField($name);
-            $this->text($name, $verify, $required, 6);
-            if ($field->hasError()) { return; }
-
-            if (strcmp($password, $verify) != 0) {
-                $field->setErrorMessage('Passwords do not match.');
-                return;
-            }
-        }
-
-        public function state($name, $value, $required = true) {
+        public function province($name, $value, $required = true) {
             $field = $this->fields->getField($name);
             $this->text($name, $value, $required);
             if ($field->hasError()) { return; }
 
-            $states = array(
-                'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC',
-                'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY',
-                'LA', 'ME', 'MA', 'MD', 'MI', 'MN', 'MS', 'MO', 'MT',
-                'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH',
-                'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT',
-                'VT', 'VA', 'WA', 'WV', 'WI', 'WY');
-            $states = implode('|', $states);
-            $pattern = '/^(' . $states . ')$/';
+            $province = array(
+                'GAUTENG', 'WESTERN CAPE', 'NORTHERN CAPE', 'NORTH WEST', 'EASTERN CAPE', 'KZN', 'MPUMALANGA', 'FREE STATE', 'LIMPOPO');
+            $province = implode('|', $province);
+            $pattern = '/^(' . $province . ')$/';
             $this->pattern($name, $value, $pattern, 
-                    'Invalid state.', $required);
+                    'Invalid province.', $required);
         }
 
-        public function zip($name, $value, $required = true) {
+        public function postal($name, $value, $required = true) {
             $field = $this->fields->getField($name);
             $this->text($name, $value, $required);
             if ($field->hasError()) { return; }
 
             $pattern = '/^\d{5}(-\d{4})?$/';
-            $message = 'Invalid zip code.';
+            $message = 'Invalid postal code.';
             $this->pattern($name, $value, $pattern, $message, $required);
         }
 
