@@ -32,38 +32,45 @@
 				public function getHTML() {
 					
 					$message = htmlspecialchars($this->message);
-					if()
+					if($this->hasError()) {
+						
+						return '<span class="error">' . $message . '</span>';
+						
+					}else { 
+							return '<span>' . $message . '</span>';
+					}
+						
+					}
 					
 				}
 				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			class Field {
+				
+				private $fields = array();
+				
+				public function addField($name, $message = ''){
+					
+					$field = new Field($name, $message);
+					$this->fields[$field->getName()] = $field;
+				}
+				
+				public function getField($name) {
+					
+					return $this->fields[$name];
+				}
+				
+				public function hasErrors() {
+					
+					foreach($this->fields as $field) {
+						
+						if ($field->hasError()) {return true;}
+					}
+					return false;
+				}
+				
+				
+				
+			}
+			
 	}
 ?>
