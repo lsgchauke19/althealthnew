@@ -1,4 +1,4 @@
-<?php include 'header.php';?>
+<?php include 'view/header.php';?>
 <main>
 	<h1>Add Client Details</h1><br>
 	<form action="." method="post">
@@ -8,7 +8,7 @@
 		
 		<label>ID:</label>
 		<input type="text" name="id" value="<?php echo htmlspecialchars($id);?>">
-		<!--<?php echo $fields->getField('id')->getHTML();?>--><br>
+		<?php echo $fields->getField('id')->getHTML();?><br>
 		
 		<label>Name:</label>
 		<input type="text" name="name" value="<?php echo htmlspecialchars($name);?>">
@@ -89,4 +89,4 @@
     </fieldset>
 
 </main>
-<?php include 'footer.php';?>
+<?php include 'view/footer.php';?>

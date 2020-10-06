@@ -1,4 +1,4 @@
-<?php include 'header.php';?>
+<?php include 'view/header.php';?>
 
 <!DOCTYPE html>
 <html>
@@ -30,4 +30,4 @@
 	</body>
 </html>
 
-<?php include 'footer.php';?>
+<?php include 'view/footer.php';?>

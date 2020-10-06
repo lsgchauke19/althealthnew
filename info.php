@@ -9,7 +9,6 @@ $fields->addField('name');
 $fields->addField('surname');
 $fields->addField('address');
 $fields->addField('code', 'Use 5 code.');
-
 $fields->addField('hometelephone', 'Use 000-000-0000.');
 $fields->addField('worktelephone', 'Use 000-000-0000.');
 $fields->addField('mobile', 'Use 000-000-0000.');
@@ -26,59 +25,52 @@ if ($action === NULL) {
 
 switch ($action) {
     case 'reset':
-        $email = '';
         
+        $id = '';
         $name = '';
         $surname = '';
-        $address = '';
-        
+        $address = ''; 
         $code = '';
         $hometelephone = '';
         $worktelephone = '';
+		$mobile = '';
+		$email = '';
         $selectType = '';
-        $cardNumber = '';
-        $cardDigits = '';
-        $expDate = '';
         
-        include 'view/register.php';
+       
+        
+        include 'client.php';
         break;
-    case 'register':
+    case 'client':
         // Copy form values to local variables
-        $email = trim(filter_input(INPUT_POST, 'email'));
-        $password = filter_input(INPUT_POST, 'password');
-        $verify = filter_input(INPUT_POST, 'verify');
-        $firstName = trim(filter_input(INPUT_POST, 'first_name'));
-        $lastName = trim(filter_input(INPUT_POST, 'last_name'));
+        
+        $id = trim(filter_input(INPUT_POST, 'id'));
+        $name = trim(filter_input(INPUT_POST, 'name'));
+        $surname = trim(filter_input(INPUT_POST, 'surname'));
         $address = trim(filter_input(INPUT_POST, 'address'));
-        $city = trim(filter_input(INPUT_POST, 'city'));
-        $state = filter_input(INPUT_POST, 'state');
-        $zip = filter_input(INPUT_POST, 'zip');
-        $phone = filter_input(INPUT_POST, 'phone');
-        $birthdate = filter_input(INPUT_POST, 'birthdate');
-        $cardType = filter_input(INPUT_POST, 'card_type');
-        $cardNumber = filter_input(INPUT_POST, 'card_number');
-        $cardDigits = preg_replace('/[^[:digit:]]/', '', $cardNumber);
-        $expDate = filter_input(INPUT_POST, 'exp_date');
+		$code = filter_input(INPUT_POST, 'code');
+        $hometelephone = trim(filter_input(INPUT_POST, 'hometelephone'));
+        $worktelephone = filter_input(INPUT_POST, 'worktelephone');
+        $mobile = filter_input(INPUT_POST, 'mobile');
+		$email = trim(filter_input(INPUT_POST, 'email'));
+        $selectType = filter_input(INPUT_POST, 'select_type');
+        
 
         // Validate form data
-        $validate->email('email', $email);
-        $validate->password('password', $password);
-        $validate->verify('verify', $password, $verify);
-        $validate->text('first_name', $firstName);
-        $validate->text('last_name', $lastName);
+		$validate->id('id', $id);
+        $validate->text('name', $name);
+        $validate->text('surname', $surname);
         $validate->text('address', $address, false);
-        $validate->text('city', $city, false);
-        $validate->state('state', $state, false);
-        $validate->zip('zip', $zip, false);
-        $validate->phone('phone', $phone);
-        $validate->birthdate('birthdate', $birthdate);
-        $validate->cardType('card_type', $cardType);
-        $validate->cardNumber('card_number', $cardDigits, $cardType);
-        $validate->expDate('exp_date', $expDate);
-
+		$validate->code('code', $code, false);
+        $validate->text('hometelephone', $hometelephone);
+        $validate->state('worktelephone', $worktelephone);
+        $validate->phone('mobile', $mobile);
+		$validate->email('email', $email);
+        $validate->selectType('select_type', $selectType);
+        
         // Load appropriate view based on hasErrors
         if ($fields->hasErrors()) {
-            include 'view/register.php';
+            include 'client.php';
         } else {
             include 'view/success.php';
         }
