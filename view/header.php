@@ -13,4 +13,3 @@
     <h1>Welcome to Alt Health</h1>
 </header>
 <main>
-        
