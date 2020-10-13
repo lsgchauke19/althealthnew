@@ -1,4 +1,5 @@
 <?php include 'view/header.php';
+		
 ?>
 
 <!DOCTYPE html>
