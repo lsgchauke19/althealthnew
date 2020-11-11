@@ -1,23 +1,27 @@
+<?php include 'view/header.php';
+require_once('database.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Guitar Shop</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Shopping Cart</title>
+   
 </head>
 <body>
-    <header>
-        <h1>My Guitar Shop</h1>
-    </header>
+    
     <main>
-        <h1>Add Item</h1>
+		<fieldset>
+	<legend>Add Item</legend><br>
+        
         <form action="." method="post" >
             <input type="hidden" name="action" value="add">
 
-            <label>Name:</label>
+            <label>Supplement:</label>
             <select name="productkey">
-            <?php foreach($products as $key => $product) :
+            <?php foreach($supplements as $key => $supplement) :
                 $cost = number_format($product['cost'], 2);
-                $name = $product['name'];
+                $name = $product['Supplement_Description'];
                 $item = $name . ' ($' . $cost . ')';
             ?>
                 <option value="<?php echo $key; ?>">
@@ -38,7 +42,9 @@
             <label>&nbsp;</label>
             <input type="submit" value="Add Item">
         </form>
-        <p><a href=".?action=show_cart">View Cart</a></p>
+        <p><a href="Index_Cart.php">View Cart</a></p>
+		</fieldset>
     </main>
 </body>
 </html>
+<?php include 'view/footer.php'; ?> 

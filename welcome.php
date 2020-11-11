@@ -19,9 +19,6 @@
 <li>
 <a href="supplier.php">Suppliers</a>
 </li><br>
-<li>
-<a href="invoice.php">Invoice</a>
-</li><br>
 				
 <li>
 <a href="Index_Cart.php">Cart</a>

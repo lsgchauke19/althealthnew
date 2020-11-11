@@ -2,23 +2,17 @@
 		include 'database.php';
 
 
-	$query = "SELECT
-				S.Supplement_ID 'SUPPLEMENT', 
-				CONCAT(S.)
+	$query = 'SELECT 
+				Supplement_ID, Supplier_ID, Supplement_Description, Min_Levels, Current_Stock_Levels
+				FROM tblsupplements
+				WHERE Current_Stock_Levels < Min_Levels
 				
-				";
+				ORDER BY Supplier_ID LIMIT 0,25';
 					
-					
-	
-	
-				
-		
-		
-					   
 					   
 $statement1 = $db->prepare($query);
 $statement1->execute();
-$invoices = $statement1->fetchAll();
+$supplements = $statement1->fetchAll();
 $statement1->closeCursor();
 		
 ?>
@@ -26,49 +20,45 @@ $statement1->closeCursor();
 <html>
 <head>
     <title>Alt Health Report</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    
 </head>
 <body>
+	<main>
+		<fieldset>
+	<legend>Minimum Level Supplements</legend><br>
+	
+	<!--Print Button-->
+	
+	<button onclick="myprint()"> Print</button>
+					<script type="text/javascript">
+							function myprint(){
+								window.print();
+							}
+					</script><br>
    
 			
-			<div class="container">
-			
-				<div class="wrapper">
-					<h1> System Reports</h1>
-				</div>
-				
-				<div class="data">
-				
-					
-						<input type="submit" name="submit" class="submit"/>
 						
-						<table border="1" class="table">
+						<br><table border="1" class="table">
 							<tr>
-								<th>Client ID</th>
-								<th>Name</th>
-								<th>Surname</th>
+								<th>Supplemet ID</th>
+								<th>Supplier ID</th>
+								<th>Supplement Description</th>
+								<th>Min Levels</th>
+								<th>Current Stock Levels</th>
 								
 								
 							</tr>
 							 <th>&nbsp;</th>
 							
-							
-							
-							
-							<?php foreach ($invoices as $invoice) : ?>
+							<?php foreach ($supplements as $supplement) : ?>
             <tr>
-                <td><?php echo $invoice['Supplement_ID']; ?></td>
-                <td><?php echo $invoice['C_name']; ?></td>
-				<td><?php echo $invoice['C_Surname']; ?></td>
+                <td><?php echo $supplement['Supplement_ID']; ?></td>
+                <td><?php echo $supplement['Supplier_ID']; ?></td>
+				<td><?php echo $supplement['Supplement_Description']; ?></td>
+				<td><?php echo $supplement['Min_Levels']; ?></td>
+				<td><?php echo $supplement['Current_Stock_Levels']; ?></td>
 				
-                <td class="right"><?php echo $supplement['Nappi_Code']; ?></td>
-                <td><form action="delete_product.php" method="post">
-                    <input type="hidden" name="product_id"
-                           value="<?php echo $supplement['Supplement_ID']; ?>">
-                    <input type="hidden" name="category_id"
-                           value="<?php echo $supplement['Supplement_ID']; ?>">
-                    <input type="submit" value="Delete">
-                </form></td>
+               
             </tr>
             <?php endforeach; ?>
 			
@@ -84,8 +74,8 @@ $statement1->closeCursor();
 	
 		
 
-
-
-
+		</fieldset>
+	</main>
+</body>
 
 <?php include 'view/footer.php';?>

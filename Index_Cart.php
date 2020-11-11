@@ -64,18 +64,14 @@ $statement->closeCursor();
 				<td><?php echo $supplement['Min_Levels']; ?></td>
 		        <td class="right"><?php echo $supplement['Current_Stock_Levels']; ?></td>
                 <td><form action="add_item_view.php" method="post">
-                    <input type="hidden" name="product_id"
-                           value="<?php echo $product['productID']; ?>">
-                    <input type="hidden" name="category_id"
-                           value="<?php echo $product['categoryID']; ?>">
+                
                     <input type="submit" value="Add Item to Cart">
                 </form></td>
 				
             </tr>
             <?php endforeach; ?>
         </table>
-        <p><a href="add_product_form.php">Add Product</a></p>
-             
+        
     </section>
 	</fieldset>
 </main>

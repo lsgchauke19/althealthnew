@@ -3,10 +3,11 @@
 
 
 	
-	$query = 'SELECT Client_ID, C_name, C_Surname, Invoice_Num
-				FROM tblclientinfo c
-					INNER JOIN tblinvoiceinfo i 	
-					ON c.Client_ID = i.Client_ID';
+	$query = 'SELECT Client_ID, C_name, C_Surname
+				FROM tblclientinfo
+				
+						
+					 LIMIT 0,5';
 		
 		
 					   
@@ -21,26 +22,31 @@ $statement1->closeCursor();
 <html>
 <head>
     <title>Alt Health Report</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+   
 </head>
 <body>
-   
-			
-			<div class="container">
-			
-				<div class="wrapper">
-					<h1> System Reports</h1>
-				</div>
+	<main>
+		<fieldset>
+	<legend>Unpaid Invoices</legend><br>
+	
+	<!--Print Button-->
+	
+	<button onclick="myprint()"> Print</button>
+					<script type="text/javascript">
+							function myprint(){
+								window.print();
+							}
+					</script><br>
+<br>
+   			</div>
 				
 				<div class="data">
-				
-					
-						<input type="submit" name="submit" class="submit"/>
-						
+		
 						<table border="1" class="table">
 							<tr>
 								<th>Client ID</th>
-								<th>CLIENT</th>
+								<th>Client Name</th>
+								<th>Client Surname</th>
 								<th>Invoice Number</th>
 								<th>Invoice Date</th>
 								
@@ -57,15 +63,7 @@ $statement1->closeCursor();
 				<td><?php echo $invoice['C_Surname']; ?></td>
 				<td><?php echo $invoice['Invoice_Num']; ?></td>
 				<td><?php echo $invoice['Invoice_Date']; ?></td>
-				
-                <td class="right"><?php echo $supplement['Nappi_Code']; ?></td>
-                <td><form action="delete_product.php" method="post">
-                    <input type="hidden" name="product_id"
-                           value="<?php echo $supplement['Supplement_ID']; ?>">
-                    <input type="hidden" name="category_id"
-                           value="<?php echo $supplement['Supplement_ID']; ?>">
-                    <input type="submit" value="Delete">
-                </form></td>
+                
             </tr>
             <?php endforeach; ?>
 			
@@ -78,6 +76,8 @@ $statement1->closeCursor();
 			
 			
 			</div>
+			</fieldset>
+			</main>
 	
 		
 
