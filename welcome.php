@@ -1,39 +1,40 @@
-<?php include 'view/header.php';
-		
-?>
+<?php include 'view/header.php';?>
 
 <!DOCTYPE html>
 <html>
 	
-	<body><br>
-		<main>
-			<ul>
-				<li>
-					<a href="welcome.php">Home</a>
-				</li><br>
-				<li>
-					<a href="index.php">Client Details</a>	
+<body><br>
+<main>
+<ul>
+<li>
+<a href="welcome.php">Home</a>
+</li><br>
+<li>
+<a href="index.php">Client Details</a>	
 						
-				</li><br>
-				<li>
-					<a href="supplements.php">Supplements</a>
-				</li><br>
-				<li>
-					<a href="suppliers.php">Suppliers</a>
-				</li><br>
-				<li>
-					<a href="invoice.php">Invoice</a>
-				</li><br>
+</li><br>
+<li>
+<a href="supplements.php">Supplements</a>
+</li><br>
+<li>
+<a href="supplier.php">Suppliers</a>
+</li><br>
+<li>
+<a href="invoice.php">Invoice</a>
+</li><br>
 				
-				<li>
-					<a href="cart.php">Cart</a>
-				</li>
+<li>
+<a href="Index_Cart.php">Cart</a>
+</li><br>
 				
-			</ul>
-	
-		</main>
+<li>
+<a href="reports.php">Reports</a>
+</li>
+				
+</ul>
+</main>
 		
-	</body>
+</body>
 </html>
 
 <?php include 'view/footer.php';?>

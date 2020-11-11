@@ -3,7 +3,7 @@ html {
 }
 body {
     font-family: Arial, Helvetica, sans-serif;
-    width: 900px;
+    width: auto;
     margin: 0 auto;
     padding: 0 2em;
     background-color: white;
@@ -73,12 +73,42 @@ input, select {
     margin-bottom: 0.5em;
     width: 14em;
 }
+script{
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+    width: 14em;
 
 br {
     clear: both;
 }
 span {
     vertical-align: middle;
+}
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px dashed black;
+    padding: .2em .5em .2em .5em;
+    vertical-align: top;
+    text-align: left;
+}
+form {
+    margin: 0;
+}
+br {
+    clear: left;
+}
+/* the styles for classes */
+.right {
+    text-align: right;
+}
+.last_paragraph {
+	margin-bottom: 2em;	
+}
+.margin_top_increase {
+	margin-top: 1em;	
 }
 
 .error {

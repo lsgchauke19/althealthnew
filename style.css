@@ -1,0 +1,71 @@
+{
+	padding: 0px;
+	margin: 0px;
+
+}
+
+body{
+
+height: fit-content;
+}
+.container{
+	width: 870px;
+	margin: 0 auto;
+	background-color: #fff;
+	height: 400px;
+	margin-top: 10px;
+	padding: 20px;
+
+}  
+.wrapper{
+	margin-bottom: 20px;
+}
+
+h1{
+	font-family: verdana;
+	color:rgb(84, 84, 172);
+}
+
+.data {
+	width: 800px;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+.data select{
+	width: 200px;
+	padding: 3px;
+	margin: 20px 0px;
+	float: left;
+	position: relative;
+	margin-right: 20px;
+}
+.submit{
+	
+	margin-top: -38px;
+    width: 100px;
+    margin-right: 398px;
+	width: 100px;
+	float: right;
+	text-align:center;
+}
+.table{
+	margin-top:20px;
+	border: 1px solid #ccc;
+	clear:both;
+}
+.table th{
+	width: 200px;
+	font-family: verdana;
+	font-size: 13px;
+	color: rgb(84, 84,172);
+	padding: 3px 20px 3px 20px;
+}
+.table td{
+	text-align: left;
+	width:300px;
+	font-family: verdana;
+	font-size: 13px;
+	padding: 3px 68px 3px 68px;
+	
+}

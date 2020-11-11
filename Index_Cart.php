@@ -1,16 +1,19 @@
 <?php require_once('database.php');
-		include 'view/header.php';
-
+	  include 'view/header.php';
+		
 ?>
 <!DOCTYPE html>
 <html>
-
+<head>
+    <title>Add Items</title>
+    
+</head>
 <!-- the body section -->
 <body>
 
-<main><br>	
-	<fieldset>
-	<legend>Supplements</legend><br>
+<main>
+		<fieldset>
+	<legend>Shopping Cart</legend><br>
 	
 	<!--Print Button-->
 	<button onclick="myprint()"> Print</button>
@@ -21,11 +24,11 @@
 					</script><br>
 
 <br>
-<?php
-
-
-$query = 'SELECT * FROM tblsupplements 
-                       ORDER BY Supplement_ID LIMIT 0,10' ;
+	
+	
+	<?php 
+$query = 'SELECT * FROM tblsupplements
+                       ORDER BY Supplement_ID LIMIT 0, 10';
 $statement = $db->prepare($query);
 $statement->execute();
 $supplements = $statement->fetchAll();
@@ -44,41 +47,34 @@ $statement->closeCursor();
 				<th>Costs Incl</th>
 				<th>Min Levels</th>
 				<th>Current Stock Levels</th>
-				<th>Nappi Code</th>
+				
                
                 <th>&nbsp;</th>
             </tr>
-		
-		
+
             <?php foreach ($supplements as $supplement) : ?>
             <tr>
+			
+				
                 <td><?php echo $supplement['Supplement_ID']; ?></td>
                 <td><?php echo $supplement['Supplier_ID']; ?></td>
 				<td><?php echo $supplement['Supplement_Description']; ?></td>
 				<td><?php echo $supplement['Costs_Excl']; ?></td>
 				<td><?php echo $supplement['Cost_Incl']; ?></td>
 				<td><?php echo $supplement['Min_Levels']; ?></td>
-				<td><?php echo $supplement['Current_Stock_Levels']; ?></td>
-				<td><?php echo $supplement['Nappi_Code']; ?></td>
-                <td class="right"><?php echo $supplement['Nappi_Code']; ?></td>
-                <td><form action="supplements.php" method="post">
-                    <input type="hidden" name="Supplement_ID"
-                           value="<?php echo $supplement['Supplement_ID']; ?>">
-                    
-					
-                    <input type="submit" value="Delete">
-					<input type="submit" value="Edit">
-					
+		        <td class="right"><?php echo $supplement['Current_Stock_Levels']; ?></td>
+                <td><form action="add_item_view.php" method="post">
+                    <input type="hidden" name="product_id"
+                           value="<?php echo $product['productID']; ?>">
+                    <input type="hidden" name="category_id"
+                           value="<?php echo $product['categoryID']; ?>">
+                    <input type="submit" value="Add Item to Cart">
                 </form></td>
+				
             </tr>
             <?php endforeach; ?>
-			
-			
         </table>
-		
-			
-				
-        <p><a href="add_product_form.php">Add Supplement</a></p>
+        <p><a href="add_product_form.php">Add Product</a></p>
              
     </section>
 	</fieldset>

@@ -2,9 +2,9 @@
 <html>    
 
 <head>
-    <title>Alt Health</title>
-	<img src="logo.png" alt="logo" width="150" height="150">
-	<link rel="stylesheet" type="text/css" href="main.css"/>
+<title>Alt Health</title>
+<img src="logo.png" alt="logo" width="80" height="80">
+<link rel="stylesheet" type="text/css" href="main.css"/>
     
 </head>
 
